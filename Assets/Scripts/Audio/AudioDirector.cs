@@ -154,11 +154,30 @@ namespace FrioAndino.Audio
         }
 
         // ------------------- Ambiente -------------------
-        /// <summary>El viento arrecia mientras baja la temperatura (0 = templado, 1 = -20 C).</summary>
+        private float _gustTimer;
+        private float _targetWindVol;
+
+        private void Update()
+        {
+            // Modulacion dinamica de rafagas de viento durante la helada
+            if (_ambient != null && !SfxMuted)
+            {
+                _gustTimer += Time.deltaTime;
+                float gust = Mathf.PerlinNoise(_gustTimer * 0.45f, 0f) * 0.25f;
+                _ambient.volume = Mathf.Clamp01((_targetWindVol + gust) * sfxVolume);
+            }
+        }
+
+        /// <summary>El viento arrecia con fuerza mientras baja la temperatura y cae la helada (0 = templado, 1 = -20 C).</summary>
         public void SetWindIntensity(float t01)
         {
-            _ambient.volume = Mathf.Lerp(0.05f, 0.22f, Mathf.Clamp01(t01));
-            _ambient.pitch = Mathf.Lerp(0.96f, 1.06f, Mathf.Clamp01(t01));
+            float severity = Mathf.Clamp01(t01);
+            // Durante el dia viento suave (0.10f); durante la helada nocturna ruge con fuerza (hasta 0.85f)
+            _targetWindVol = Mathf.Lerp(0.12f, 0.85f, Mathf.Pow(severity, 1.2f));
+            if (_ambient != null)
+            {
+                _ambient.pitch = Mathf.Lerp(0.92f, 1.10f, severity);
+            }
         }
 
         /// <summary>Volumen del crepitar segun cercania del jugador al fogon y combustible.</summary>

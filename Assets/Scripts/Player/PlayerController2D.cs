@@ -31,6 +31,7 @@ namespace FrioAndino.Player
         [Header("Pututo")]
         [SerializeField] private float pututoCooldown = 6f;
 
+        public static PlayerController2D Instance { get; private set; }
         public float Stamina { get; private set; }
         public float StaminaRatio => Stamina / maxStamina;
         public float PututoReadyRatio => 1f - Mathf.Clamp01(_pututoTimer / pututoCooldown);
@@ -54,6 +55,7 @@ namespace FrioAndino.Player
 
         private void Awake()
         {
+            Instance = this;
             _sr = GetComponent<SpriteRenderer>();
             if (_sr.sprite == null) _sr.sprite = GameArt.Inti;
 
@@ -81,6 +83,11 @@ namespace FrioAndino.Player
         private void Start()
         {
             if (GameManager.Instance != null) GameManager.Instance.PlayerTransform = transform;
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
         }
 
         private void Update()
@@ -174,6 +181,7 @@ namespace FrioAndino.Player
 
         /// <summary>Convoca a los ronderos libres y alerta al rebano. Es el nucleo del ayni: nadie trabaja solo.
         /// Tecla [Q]. Si hay hoja de animacion "inti_pututo", se ve a Inti tocando el cuerno.</summary>
+        public void UsePututo() => BlowPututo();
         public void BlowPututo()
         {
             _pututoTimer = pututoCooldown;

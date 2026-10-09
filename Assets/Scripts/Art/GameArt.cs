@@ -205,6 +205,13 @@ namespace FrioAndino.Art
         public static Sprite Alpaca => Make("alpaca", "alpaca", PPU, new Vector2(0.5f, 0f));
         public static Sprite AlpacaBaby => Make("alpaca_cria", "alpaca_cria", PPU, new Vector2(0.5f, 0f));
 
+        /// <summary>Sprites de los 3 paneles oficiales (Figma/ODS) cargados para el menú de opciones/sistemas.</summary>
+        public static Sprite MenuRecursos => Make("menu_recursos", "menu_recursos", PPU, new Vector2(0.5f, 0.5f));
+        public static Sprite MenuSecundarios => Make("menu_secundarios", "menu_secundarios", PPU, new Vector2(0.5f, 0.5f));
+        public static Sprite MenuProgresion => Make("menu_progresion", "menu_progresion", PPU, new Vector2(0.5f, 0.5f));
+        public static Sprite ThermometerHud => Make("termometro_hud", "termometro_hud", PPU, new Vector2(0.5f, 0.5f));
+        public static Sprite YachachiqNotebook => Make("yachachiq_notebook", "yachachiq_notebook", PPU, new Vector2(0.5f, 0.5f));
+
         public static Texture2D MenuTexture => LoadTexture("menu");
 
         public static bool Available => LoadTexture("fondo") != null;

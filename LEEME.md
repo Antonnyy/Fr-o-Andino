@@ -33,8 +33,12 @@ sin depender de la configuración del importador de Unity.
 | `menu.bytes` | Tu pantalla de título | Menú principal, con zonas clicables encima |
 | `vidrio.bytes` | El panel de vidrio recortado de tu propia casa Trombe | Se monta sobre las casas al construir el Muro Trombe |
 | `ichu_techo.bytes` | La paja del techo, recortada de tu fondo | Se monta al sellar una vivienda con ichu |
-| `fogon_apagado.bytes` | El fogón con la llama apagada y en ceniza fría | Aparece si el fogón se queda sin leña |
-| `alpaca.bytes` / `alpaca_cria.bytes` | Alpacas en pixel art | Rebaño que se arrea al cobertizo |
+| `alpaca.bytes` / `alpaca_cria.bytes` | Alpacas detalladas en pixel art | Rebaño que se arrea al cobertizo |
+| `yachachiq_notebook.bytes` | Cuaderno del Yachachiq | Guía técnica y diagnóstico en vivo ([J]) |
+| `termometro_hud.bytes` | Termómetro andino con hielo | Indicador dinámico de helada en el HUD |
+| `menu_recursos.bytes` | Infografía de Recursos | Pestaña [1] en menú de sistemas |
+| `menu_secundarios.bytes` | Clima y Pastoreo | Pestaña [2] en menú de sistemas |
+| `menu_progresion.bytes` | Progresión Muro Trombe | Pestaña [3] en menú de sistemas |
 
 **El mundo ES tu imagen**: cada objeto interactivo está colocado en las coordenadas en
 píxeles de tu fondo, así que la casa que ves es exactamente la casa con la que interactúas.
